@@ -1,11 +1,22 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'check-circleci-status-action'
+description: 'Poll circleci pipeline and return the status'
+author: 'lucaslim'
 inputs:
-  milliseconds: # change this
+  pipelineId:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'CircleCI Pipeline ID'
+  token:
+    required: true
+    description: 'CircleCI token'
+  interval:
+    required: false
+    description: 'Number of milliseconds to wait after condition resolves to false before calling it again'
+    default: '500'
+  timeout:
+    required: false
+    description: 'Number of milliseconds to wait before automatically rejecting with an Error'
+    default: '1800000'
+
 runs:
   using: 'node16'
   main: 'dist/index.js'
