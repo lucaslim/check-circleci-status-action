@@ -60,6 +60,9 @@ function run() {
                         'Circle-Token': token
                     }
                 });
+                if (response.data.items.length === 0) {
+                    return false;
+                }
                 const status = response.data.items[0].status;
                 if (status === 'running') {
                     return false;
